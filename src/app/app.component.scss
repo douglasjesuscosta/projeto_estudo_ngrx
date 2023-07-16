@@ -1,0 +1,22 @@
+.aplicacao-container {
+  max-height: 100vh;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 55px 1fr 55px;
+}
+
+.cabecalho {
+}
+
+.conteudo {
+  padding: 1.5rem;
+  background-color: var(--bs-body-bg);
+}
+
+.rodape {
+  background-color: green !important;
+}
+
+.card-background {
+  background-color: var(--bs-tertiary-color);
+}

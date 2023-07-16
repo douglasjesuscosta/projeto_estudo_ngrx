@@ -1,0 +1,18 @@
+.tela-login {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+
+  &__card-form {
+    min-width: 400px;
+    margin: auto;
+    width: 30%;
+  }
+
+  &__container-botao {
+    display: flex;
+    flex-flow: row;
+    gap: 5px;
+  }
+}
