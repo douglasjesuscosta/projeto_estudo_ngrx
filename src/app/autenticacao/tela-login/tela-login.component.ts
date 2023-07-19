@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { LoginService } from '../login.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { tap } from 'rxjs';
+import { noop, tap } from 'rxjs';
 import { AppState } from '../reducers';
 import { Store } from '@ngrx/store';
+import { login } from '../autenticacao.actions';
 
 @Component({
   selector: 'app-tela-login',
@@ -35,9 +36,9 @@ export class TelaLoginComponent {
       .pipe(
         tap((user) => {
           console.log('USER', user);
+          this.store.dispatch(login(user))
           this.router.navigateByUrl('/paginas/inicio');
         })
-      )
-      .subscribe();
+      ).subscribe(noop, () => alert("Falha ao realizar login"));
   }
 }
