@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { AuthGuard } from './autenticacao/login.service';
+
 const routes: Routes = [
   {
     path: '',
@@ -11,6 +13,7 @@ const routes: Routes = [
   },
   {
     path: 'paginas',
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./features/features.module').then((m) => m.FeaturesModule),
   },

@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
-import { LoginService } from '../login.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { noop, tap } from 'rxjs';
-import { AppState } from '../reducers';
 import { Store } from '@ngrx/store';
-import { login } from '../autenticacao.actions';
+import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { LoginService } from '../login.service';
+import { loginAction } from '../autenticacao.actions';
+import { AutenticacaoState } from '../reducers';
 
 @Component({
   selector: 'app-tela-login',
@@ -19,7 +20,7 @@ export class TelaLoginComponent {
     private fb: FormBuilder,
     private loginService: LoginService,
     private router: Router,
-    private store: Store<AppState>
+    private store: Store<AutenticacaoState>
   ) {
     this.form = fb.group({
       email: ['test@angular-university.io', [Validators.required]],
@@ -29,16 +30,18 @@ export class TelaLoginComponent {
 
   public login() {
     const valueForm = this.form.value;
-    console.log('VALUE FORM', valueForm);
 
     this.loginService
       .login(valueForm.email, valueForm.password)
       .pipe(
         tap((user) => {
-          console.log('USER', user);
-          this.store.dispatch(login(user))
+          this.store.dispatch(loginAction({ user }));
           this.router.navigateByUrl('/paginas/inicio');
         })
-      ).subscribe(noop, () => alert("Falha ao realizar login"));
+      )
+      .subscribe({
+        next: noop,
+        error: (error) => console.log('Error:', error),
+      });
   }
 }
