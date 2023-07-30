@@ -1,0 +1,15 @@
+.cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__funcoes-principais {
+    align-items: center;
+    display: flex;
+  }
+
+  &__funcoes-secundarias {
+    align-self: flex-end;
+    justify-self: flex-end;
+  }
+}

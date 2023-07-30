@@ -1,6 +1,43 @@
+@use "@angular/material" as mat;
+@use "sass:map";
 
-/* Importing Bootstrap SCSS file. */
-@import "./node_modules/bootstrap/scss/bootstrap";
+@include mat.core();
 
-/* Importing Datepicker SCSS file. */
-@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
+$dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: mat.define-palette(mat.$teal-palette, 200),
+      accent: mat.define-palette(mat.$indigo-palette),
+    ),
+    density: 0,
+    typography: mat.define-typography-config(),
+  )
+);
+
+$light-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: mat.define-palette(mat.$pink-palette),
+      accent: mat.define-palette(mat.$blue-grey-palette),
+    ),
+  )
+);
+
+@include mat.all-component-themes($light-theme);
+
+.dark {
+  @include mat.all-component-colors($dark-theme);
+  color: #ffffff;
+}
+
+html,
+body {
+  height: 100vh;
+  width: 100vw;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

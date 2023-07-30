@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { LoginService } from '../login.service';
-import { loginAction } from '../autenticacao.actions';
+import { carregandoAction, loginAction } from '../autenticacao.actions';
 import { AutenticacaoState } from '../reducers';
 
 @Component({
@@ -31,6 +31,12 @@ export class TelaLoginComponent {
   public login() {
     const valueForm = this.form.value;
 
+    this.store.dispatch(carregandoAction());
+
+    this.realizarRequisicaoLogin(valueForm);
+  }
+
+  private realizarRequisicaoLogin(valueForm: any) {
     this.loginService
       .login(valueForm.email, valueForm.password)
       .pipe(

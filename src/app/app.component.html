@@ -1,9 +1,13 @@
-<div class="aplicacao-container" data-bs-theme="dark">
+<div class="aplicacao-container dark">
   <div class="cabecalho">
     <app-cabecalho></app-cabecalho>
   </div>
 
-  <div class="conteudo" data-bs-theme="dark">
+  <div class="conteudo">
+    <mat-progress-bar
+      class="conteudo__carregamento"
+      mode="indeterminate"
+    ></mat-progress-bar>
     <router-outlet></router-outlet>
   </div>
 

@@ -5,10 +5,12 @@ import { ActionReducerMap, createReducer, on } from '@ngrx/store';
 export const autenticacaoFeatureKey = 'autenticacao';
 
 export interface AutenticacaoState {
+  carregando?: boolean;
   user?: IUser;
 }
 
 export const initialState: AutenticacaoState = {
+  carregando: false,
   user: undefined,
 };
 
@@ -19,6 +21,7 @@ export const autenticacaoReducer = createReducer(
   on(AutenticacaoActions.loginAction, (state, action) => {
     return {
       ...state,
+      carregando: false,
       user: action.user,
     };
   })

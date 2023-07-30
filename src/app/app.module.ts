@@ -1,3 +1,4 @@
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { StoreModule } from '@ngrx/store';
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,6 +18,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
     BrowserModule,
     LayoutModule,
     AppRoutingModule,
+    MatProgressBarModule,
     AutenticacaoModule.forRoot(),
     BrowserAnimationsModule,
     StoreModule.forRoot({}, {}),

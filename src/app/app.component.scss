@@ -1,22 +1,36 @@
+@use "@angular/material" as mat;
+
+$my-palette: mat.define-palette(mat.$blue-grey-palette);
+
 .aplicacao-container {
   max-height: 100vh;
   height: 100vh;
   display: grid;
-  grid-template-rows: 55px 1fr 55px;
+  grid-template-rows: 60px 1fr 50px;
+}
+
+.dark .aplicacao-container {
+  background: mat.get-color-from-palette($my-palette, 100);
+  color: mat.get-color-from-palette($my-palette, "500-contrast");
 }
 
 .cabecalho {
 }
 
 .conteudo {
-  padding: 1.5rem;
-  background-color: var(--bs-body-bg);
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+
+  overflow-y: auto;
+  overflow-x: auto;
+
+  &__carregamento {
+    position: fixed;
+    top: 60;
+    width: 100%;
+  }
 }
 
 .rodape {
-  background-color: green !important;
-}
-
-.card-background {
-  background-color: var(--bs-tertiary-color);
 }
