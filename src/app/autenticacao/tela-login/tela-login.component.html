@@ -5,6 +5,8 @@
       <mat-card-subtitle>Informe o usuário e a senha</mat-card-subtitle>
     </mat-card-header>
 
+    <mat-divider></mat-divider>
+
     <mat-card-content>
       <div [formGroup]="form" class="card-body tela-login__card-form--campos">
         <mat-form-field class="example-full-width">
@@ -12,6 +14,7 @@
           <input
             type="email"
             matInput
+            aria-label="teste"
             formControlName="email"
             placeholder="Ex. pat@example.com"
           />
@@ -23,15 +26,13 @@
         </mat-form-field>
       </div>
 
-      <mat-divider></mat-divider>
+      <div [tabIndex]="0">teste</div>
+
+      <div class="tela-login__container-botao">
+        <button mat-raised-button (click)="login()" color="primary">
+          Login
+        </button>
+      </div>
     </mat-card-content>
-
-    <mat-card-actions>
-      <button mat-raised-button (click)="login()" color="primary">Login</button>
-    </mat-card-actions>
-
-    <mat-card-footer>
-      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-    </mat-card-footer>
   </mat-card>
 </div>

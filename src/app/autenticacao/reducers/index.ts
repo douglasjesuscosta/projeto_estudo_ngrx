@@ -1,16 +1,19 @@
-import { AutenticacaoActions } from '../autenticacao.actions.type';
-import { IUser } from '../model/user.interface';
 import { ActionReducerMap, createReducer, on } from '@ngrx/store';
+
+import { IUser } from '../model/user.interface';
+import { AutenticacaoActions } from '../autenticacao.actions.type';
 
 export const autenticacaoFeatureKey = 'autenticacao';
 
 export interface AutenticacaoState {
   carregando?: boolean;
+  usuarioLogado?: boolean;
   user?: IUser;
 }
 
 export const initialState: AutenticacaoState = {
   carregando: false,
+  usuarioLogado: false,
   user: undefined,
 };
 
@@ -22,6 +25,7 @@ export const autenticacaoReducer = createReducer(
     return {
       ...state,
       carregando: false,
+      usuarioLogado: true,
       user: action.user,
     };
   })

@@ -3,25 +3,30 @@
     <span>My Application</span>
     <div class="example-button-row">
       <button href="#" mat-button>Início</button>
-      <button href="#" mat-button>Início</button>
-      <button href="#" mat-button>Início</button>
-      <button href="#" mat-button>Início</button>
     </div>
   </div>
-  <div class="cabecalho__funcoes-secundarias">
+  <div
+    class="cabecalho__funcoes-secundarias"
+    *ngIf="usuarioEstaLogado$ | async; else loginButton"
+  >
+    <span *ngIf="usuarioLogado$ | async as usuarioLogado">
+      {{ usuarioLogado.email }}
+    </span>
     <button
       mat-icon-button
       class="example-icon favorite-icon"
       aria-label="Example icon-button with heart icon"
     >
-      <mat-icon>favorite</mat-icon>
-    </button>
-    <button
-      mat-icon-button
-      class="example-icon"
-      aria-label="Example icon-button with share icon"
-    >
-      <mat-icon>share</mat-icon>
+      <mat-icon>logout</mat-icon>
     </button>
   </div>
+  <ng-template #loginButton>
+    <button
+      mat-icon-button
+      class="example-icon favorite-icon"
+      aria-label="Example icon-button with heart icon"
+    >
+      <mat-icon>login</mat-icon>
+    </button>
+  </ng-template>
 </mat-toolbar>

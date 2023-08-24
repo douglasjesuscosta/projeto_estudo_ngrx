@@ -9,7 +9,9 @@
   }
 
   &__funcoes-secundarias {
-    align-self: flex-end;
-    justify-self: flex-end;
+    height: 100%;
+    display: flex;
+    align-content: center;
+    align-items: center;
   }
 }
