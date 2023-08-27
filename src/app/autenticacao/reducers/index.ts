@@ -28,5 +28,13 @@ export const autenticacaoReducer = createReducer(
       usuarioLogado: true,
       user: action.user,
     };
+  }),
+  on(AutenticacaoActions.logoutAction, (state, action) => {
+    return {
+      ...state,
+      carregando: false,
+      usuarioLogado: false,
+      user: undefined,
+    };
   })
 );

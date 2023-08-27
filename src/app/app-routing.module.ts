@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthGuard } from './autenticacao/login.service';
+import { AuthGuard } from './autenticacao/autenticacao.guard';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'login',
     loadChildren: () =>
       import('./autenticacao/autenticacao.module').then(
         (m) => m.AutenticacaoModule

@@ -11,6 +11,7 @@ $my-palette: mat.define-palette(mat.$blue-grey-palette);
 
 .dark .aplicacao-container {
   background: mat.get-color-from-palette($my-palette, 100);
+  background-color: mat.get-color-from-palette($my-palette, 300);
   color: mat.get-color-from-palette($my-palette, "500-contrast");
 }
 

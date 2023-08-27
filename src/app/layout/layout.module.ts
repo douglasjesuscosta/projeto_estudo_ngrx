@@ -16,10 +16,7 @@ import { RodapeComponent } from './rodape/rodape.component';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    StoreModule.forFeature(
-      fromLayout.layoutFeatureKey,
-      fromLayout.layoutReducer
-    ),
+    StoreModule.forFeature(fromLayout.layoutFeatureKey, fromLayout.layoutReducer),
   ],
   exports: [CabecalhoComponent, RodapeComponent],
 })

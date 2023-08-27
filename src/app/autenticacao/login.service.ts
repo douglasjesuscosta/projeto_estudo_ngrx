@@ -1,19 +1,13 @@
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { Store, select } from '@ngrx/store';
-import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {
-  ActivatedRouteSnapshot,
-  CanActivateFn,
-  RouterStateSnapshot,
-} from '@angular/router';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
+import { Injectable } from '@angular/core';
 
 import { IUser } from './model/user.interface';
 import { AutenticacaoState } from './reducers';
-import {
-  obterUsuarioLogadoSelector,
-  usuarioEstaLogadoSelector,
-} from './selectors/autenticacao.selector';
+import { obterUsuarioLogadoSelector, usuarioEstaLogadoSelector } from './selectors/autenticacao.selector';
+import { logoutAction } from './autenticacao.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -22,10 +16,7 @@ export class LoginService {
   private usuarioLogado: boolean;
   private usuarioLogado$: Observable<boolean>;
 
-  constructor(
-    private http: HttpClient,
-    private store: Store<AutenticacaoState>
-  ) {
+  constructor(private http: HttpClient, private store: Store<AutenticacaoState>, private router: Router) {
     this.usuarioLogado = false;
     this.usuarioLogado$ = this.store.pipe(select(usuarioEstaLogadoSelector));
     this.monitorarUsuarioLogado();
@@ -33,6 +24,11 @@ export class LoginService {
 
   public login(email: string, password: string): Observable<IUser> {
     return this.http.post<IUser>('/api/login', { email, password });
+  }
+
+  public logout() {
+    this.store.dispatch(logoutAction());
+    this.router.navigateByUrl('/login');
   }
 
   public usuarioEstaLogado(): Observable<boolean> {
@@ -49,17 +45,16 @@ export class LoginService {
     });
   }
 
-  public canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): boolean {
-    return this.usuarioLogado;
+  public canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+    return this.store.pipe(
+      select(usuarioEstaLogadoSelector),
+      tap((usuarioEstaLogado) => this.verificarUsuarioLogado(usuarioEstaLogado))
+    );
+  }
+
+  private verificarUsuarioLogado(usuarioEstaLogado: boolean) {
+    if (!usuarioEstaLogado) {
+      this.router.navigateByUrl('/login');
+    }
   }
 }
-
-export const AuthGuard: CanActivateFn = (
-  next: ActivatedRouteSnapshot,
-  state: RouterStateSnapshot
-): boolean => {
-  return inject(LoginService).canActivate(next, state);
-};

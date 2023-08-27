@@ -11,13 +11,7 @@
       <div [formGroup]="form" class="card-body tela-login__card-form--campos">
         <mat-form-field class="example-full-width">
           <mat-label>Email</mat-label>
-          <input
-            type="email"
-            matInput
-            aria-label="teste"
-            formControlName="email"
-            placeholder="Ex. pat@example.com"
-          />
+          <input type="email" matInput aria-label="teste" formControlName="email" placeholder="Ex. pat@example.com" />
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
@@ -26,12 +20,8 @@
         </mat-form-field>
       </div>
 
-      <div [tabIndex]="0">teste</div>
-
       <div class="tela-login__container-botao">
-        <button mat-raised-button (click)="login()" color="primary">
-          Login
-        </button>
+        <button mat-raised-button (click)="login()" color="primary">Login</button>
       </div>
     </mat-card-content>
   </mat-card>
