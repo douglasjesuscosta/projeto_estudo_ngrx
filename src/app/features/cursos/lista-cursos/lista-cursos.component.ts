@@ -1,7 +1,8 @@
+import { Observable, map } from 'rxjs';
 import { Component } from '@angular/core';
-import { listFadeAnimation } from 'src/app/shared/animations/list-fade.animation';
-import { Observable } from 'rxjs';
+
 import { CursosService } from '../../services/cursos.service';
+import { listFadeAnimation } from 'src/app/shared/animations/list-fade.animation';
 
 @Component({
   selector: 'app-lista-cursos',
@@ -10,9 +11,9 @@ import { CursosService } from '../../services/cursos.service';
   animations: [listFadeAnimation],
 })
 export class ListaCursosComponent {
-  public $listaCursos: Observable<[]>;
+  public $listaCursos: Observable<any[]>;
 
   constructor(private cursosService: CursosService) {
-    this.$listaCursos = this.cursosService.getCursos();
+    this.$listaCursos = this.cursosService.getCursos().pipe(map((resultado) => resultado.payload));
   }
 }

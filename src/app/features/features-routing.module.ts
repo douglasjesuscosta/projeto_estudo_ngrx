@@ -8,6 +8,10 @@ const routes: Routes = [
     path: 'inicio',
     component: PaginaInicialComponent,
   },
+  {
+    path: 'cursos',
+    loadChildren: () => import('./cursos/cursos.module').then((m) => m.CursosModule),
+  },
 ];
 
 @NgModule({

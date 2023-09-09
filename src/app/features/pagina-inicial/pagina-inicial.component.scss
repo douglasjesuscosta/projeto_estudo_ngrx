@@ -10,7 +10,8 @@
   padding: 2.5rem;
 
   &__card {
-    width: 20%;
+    min-width: 300px;
+    max-width: 20%;
     height: fit-content;
   }
 }
