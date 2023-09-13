@@ -1,7 +1,11 @@
 <div class="aplicacao-container">
   <div class="cabecalho">
     <app-cabecalho></app-cabecalho>
-    <mat-progress-bar class="conteudo__carregamento" mode="indeterminate"></mat-progress-bar>
+    <mat-progress-bar
+      *ngIf="carregamento$ | async as carregamento"
+      class="conteudo__carregamento"
+      mode="indeterminate"
+    ></mat-progress-bar>
   </div>
 
   <div class="conteudo">

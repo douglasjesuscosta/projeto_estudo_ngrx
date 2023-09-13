@@ -1,7 +1,5 @@
-import { createAction } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 
-export const carregandoLoginAction = createAction('[Login page] Carregando');
+export const carregandoLoginAction = createAction('[Login page] Carregando', props<{ value: boolean }>());
 
-export const conclusaoCarregandoLoginAction = createAction(
-  '[Login page] Carregado'
-);
+export const conclusaoCarregandoLoginAction = createAction('[Login page] Carregado');
