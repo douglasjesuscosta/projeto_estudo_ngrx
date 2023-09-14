@@ -1,18 +1,18 @@
 <div class="tela-cursos" *ngIf="$listaCursos | async as listaCursos">
   <div [@listAnimation]="listaCursos.length">
     <div class="tela-cursos__lista">
-      <mat-card class="tela-cursos__lista--card" *ngFor="let curso of listaCursos">
+      <mat-card class="card" *ngFor="let curso of listaCursos">
         <mat-card-header>
           <mat-card-title>{{ curso.description }}</mat-card-title>
         </mat-card-header>
 
-        <mat-card-content>
+        <mat-card-content class="card__conteudo">
           <p>
             {{ curso.longDescription }}
           </p>
         </mat-card-content>
-        <mat-divider></mat-divider>
-        <mat-card-actions align="end">
+
+        <mat-card-actions class="card__botoes">
           <button color="primary" mat-raised-button>Editar</button>
           <button color="primary" mat-raised-button>Excluir</button>
         </mat-card-actions>

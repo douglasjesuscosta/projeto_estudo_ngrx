@@ -5,19 +5,29 @@
 
   &__lista {
     display: flex;
-    gap: 10px;
+    gap: 2rem;
     flex-wrap: wrap;
     padding-top: 5rem;
     align-items: center;
     align-content: center;
     justify-content: center;
+  }
 
-    &--card {
+  .card {
+    display: flex;
+    flex-flow: column;
+    gap: 10px;
+    width: 300px;
+    min-height: fit-content;
+    height: 250px;
+
+    &__conteudo {
+      height: 100%;
+    }
+
+    &__botoes {
       display: flex;
-      flex-flow: column;
       gap: 10px;
-      width: 200px;
-      height: 300px;
     }
   }
 }
