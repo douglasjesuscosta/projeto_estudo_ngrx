@@ -9,16 +9,22 @@ import { MatDividerModule } from '@angular/material/divider';
 import { CursosRoutingModule } from './cursos-routing.module';
 import { ListaCursosComponent } from './lista-cursos/lista-cursos.component';
 import { AdicionarEditarComponent } from './adicionar-editar/adicionar-editar.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [ListaCursosComponent, AdicionarEditarComponent],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     MatCardModule,
     MatIconModule,
     MatDialogModule,
     MatButtonModule,
+    MatInputModule,
     MatDividerModule,
+    MatFormFieldModule,
     CursosRoutingModule,
   ],
 })

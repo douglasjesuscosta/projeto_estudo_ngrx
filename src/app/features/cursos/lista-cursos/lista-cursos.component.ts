@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { CursosService } from '../../services/cursos.service';
 import { listFadeAnimation } from 'src/app/shared/animations/list-fade.animation';
 import { MatDialog } from '@angular/material/dialog';
+import { AdicionarEditarComponent } from '../adicionar-editar/adicionar-editar.component';
 
 @Component({
   selector: 'app-lista-cursos',
@@ -18,14 +19,16 @@ export class ListaCursosComponent {
     this.$listaCursos = this.cursosService.getCursos().pipe(map((resultado) => resultado.payload));
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      data: { name: this.name, animal: this.animal },
+  public adicionarEditarCurso(curso: any): void {
+    const dialogRef = this.dialog.open(AdicionarEditarComponent, {
+      height: '400px',
+      width: '600px',
+
+      data: {},
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
-      this.animal = result;
     });
   }
 }

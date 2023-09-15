@@ -1,27 +1,22 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-adicionar-editar',
   templateUrl: './adicionar-editar.component.html',
-  styleUrls: ['./adicionar-editar.component.scss']
+  styleUrls: ['./adicionar-editar.component.scss'],
 })
 export class AdicionarEditarComponent {
+  public formularioCurso: FormGroup;
 
-  @Component({
-    selector: 'dialog-overview-example-dialog',
-    templateUrl: 'dialog-overview-example-dialog.html',
-    standalone: true,
-    imports: [MatDialogModule, MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule],
-  })
-  export class DialogOverviewExampleDialog {
-    constructor(
-      public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-      @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    ) {}
-
-    onNoClick(): void {
-      this.dialogRef.close();
-    }
+  constructor(private formBuilder: FormBuilder) {
+    this.formularioCurso = this.obterFormularioCurso();
   }
 
+  public obterFormularioCurso(): FormGroup {
+    return this.formBuilder.group({
+      nome: [''],
+      valor: [0],
+    });
+  }
 }
