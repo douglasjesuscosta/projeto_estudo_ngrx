@@ -1,6 +1,6 @@
-import { Observable } from 'rxjs';
+import { Observable, debounceTime } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 
 import { carregamentoSelector } from './layout/estado/selectors/carregando.selector';
 
@@ -13,11 +13,9 @@ export class AppComponent implements OnInit {
   public carregamento$: Observable<boolean>;
   public title = 'ngrx-projeto-estudo';
 
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+  ngOnInit(): void {}
 
-  constructor(private store: Store) {
-    this.carregamento$ = this.store.select(carregamentoSelector);
+  constructor(private store: Store, private cdref: ChangeDetectorRef) {
+    this.carregamento$ = this.store.select(carregamentoSelector).pipe(debounceTime(0));
   }
 }

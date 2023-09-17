@@ -4,7 +4,7 @@ import { Observable, noop, tap } from 'rxjs';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { LoginService } from '../../autenticacao/login.service';
-import { AutenticacaoState } from 'src/app/autenticacao/reducers';
+import { AutenticacaoState } from 'src/app/autenticacao/sessao/reducers';
 import { IUser } from 'src/app/autenticacao/model/user.interface';
 import { GerenciadorTemaService } from 'src/app/shared/services/gerenciador-temas.service';
 

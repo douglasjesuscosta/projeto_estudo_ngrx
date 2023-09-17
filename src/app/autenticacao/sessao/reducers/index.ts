@@ -1,7 +1,7 @@
 import { ActionReducerMap, createReducer, on } from '@ngrx/store';
 
-import { IUser } from '../model/user.interface';
-import { AutenticacaoActions } from '../autenticacao.actions.type';
+import { IUser } from '../../model/user.interface';
+import { AutenticacaoActions } from '../actions/autenticacao.actions.type';
 
 export const autenticacaoFeatureKey = 'autenticacao';
 

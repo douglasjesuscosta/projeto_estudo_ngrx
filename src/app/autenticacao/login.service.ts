@@ -1,13 +1,13 @@
 import { Observable, tap } from 'rxjs';
+import { Injectable } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
-import { Injectable } from '@angular/core';
 
 import { IUser } from './model/user.interface';
-import { AutenticacaoState } from './reducers';
-import { obterUsuarioLogadoSelector, usuarioEstaLogadoSelector } from './selectors/autenticacao.selector';
-import { logoutAction } from './autenticacao.actions';
+import { AutenticacaoState } from './sessao/reducers';
+import { logoutAction } from './sessao/actions/autenticacao.actions';
+import { obterUsuarioLogadoSelector, usuarioEstaLogadoSelector } from './sessao/selectors/autenticacao.selector';
 
 @Injectable({
   providedIn: 'root',

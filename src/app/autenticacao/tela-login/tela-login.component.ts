@@ -5,8 +5,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { LoginService } from '../login.service';
-import { carregandoAction, loginAction } from '../autenticacao.actions';
-import { AutenticacaoState } from '../reducers';
+import { AutenticacaoState } from '../sessao/reducers';
+import { carregandoAction, loginAction } from '../sessao/actions/autenticacao.actions';
 
 @Component({
   selector: 'app-tela-login',

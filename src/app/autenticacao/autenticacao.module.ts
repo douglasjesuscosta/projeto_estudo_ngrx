@@ -10,9 +10,11 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ModuleWithProviders, NgModule, isDevMode } from '@angular/core';
 
 import { LoginService } from './login.service';
-import * as fromAutenticacao from './reducers';
+import * as fromAutenticacao from './sessao/reducers';
 import { TelaLoginComponent } from './tela-login/tela-login.component';
 import { AutenticacaoRoutingModule } from './autenticacao-routing.module';
+import { EffectsModule } from '@ngrx/effects';
+import { AutenticacaoEffectService } from './sessao/effects/autenticacao.service.effect';
 
 @NgModule({
   declarations: [TelaLoginComponent],
@@ -26,10 +28,8 @@ import { AutenticacaoRoutingModule } from './autenticacao-routing.module';
     MatDividerModule,
     MatProgressBarModule,
     HttpClientModule,
-    StoreModule.forFeature(
-      fromAutenticacao.autenticacaoFeatureKey,
-      fromAutenticacao.autenticacaoReducer
-    ),
+    StoreModule.forFeature(fromAutenticacao.autenticacaoFeatureKey, fromAutenticacao.autenticacaoReducer),
+    EffectsModule.forFeature([AutenticacaoEffectService]),
   ],
 })
 export class AutenticacaoModule {
