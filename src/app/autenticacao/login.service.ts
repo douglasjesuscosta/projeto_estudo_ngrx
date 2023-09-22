@@ -6,7 +6,7 @@ import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/ro
 
 import { IUser } from './model/user.interface';
 import { AutenticacaoState } from './sessao/reducers';
-import { logoutAction } from './sessao/actions/autenticacao.actions';
+import { loginAction, logoutAction } from './sessao/actions/autenticacao.actions';
 import { obterUsuarioLogadoSelector, usuarioEstaLogadoSelector } from './sessao/selectors/autenticacao.selector';
 
 @Injectable({
@@ -28,7 +28,6 @@ export class LoginService {
 
   public logout() {
     this.store.dispatch(logoutAction());
-    this.router.navigateByUrl('/login');
   }
 
   public usuarioEstaLogado(): Observable<boolean> {
@@ -54,7 +53,14 @@ export class LoginService {
 
   private verificarUsuarioLogado(usuarioEstaLogado: boolean) {
     if (!usuarioEstaLogado) {
-      this.router.navigateByUrl('/login');
+      let usuarioRecuperado = localStorage.getItem('user');
+      let usuarioLogado: IUser = usuarioRecuperado ? JSON.parse(usuarioRecuperado) : null;
+
+      if (usuarioLogado) {
+        usuarioLogado && this.store.dispatch(loginAction({ user: usuarioLogado }));
+      } else {
+        this.router.navigateByUrl('/login');
+      }
     }
   }
 }
