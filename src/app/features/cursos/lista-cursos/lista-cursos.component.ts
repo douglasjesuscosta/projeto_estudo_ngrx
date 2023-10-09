@@ -6,7 +6,7 @@ import { listFadeAnimation } from 'src/app/shared/animations/list-fade.animation
 import { MatDialog } from '@angular/material/dialog';
 import { AdicionarEditarComponent } from '../adicionar-editar/adicionar-editar.component';
 import { Store } from '@ngrx/store';
-import { salvarListaCursos } from '../sessao/actions/curso-actions.action';
+import { salvarListaCursos } from '../sessao/actions/curso.action';
 
 @Component({
   selector: 'app-lista-cursos',
